@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOTING SYSTEM</title>
+    <style>
+        body{
+         align-content: center;   
+         background-color: #e1e7fc; 
+  background-repeat: no-repeat;
+  background-size: cover;
+        }
+        div{
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        img{
+            height: 15%;
+            width: 15%;
+            border-radius: 20%;  
+        }
+        #label1{
+            color:red;
+        }
+        input:valid {
+            color: green;
+        }
+        input:invalid {
+            color: red;
+        }
+        #numb{
+    width: 400px;
+    height: 50px;
+    border: none;
+	border-radius: 10px;
+	text-align: center;
+	background: #eef2f3;
+    }
+    button {
+  width: 120px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  
+  }
+
+button:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+.home:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#but1 {
+  width: 400px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  
+  }
+
+  #but2 {
+  width: 240px;
+  height: 35px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #335eea;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+  #but1:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#but2:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+.wrapper {
+  width: 100%;
+  padding-left: 1.7rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  margin-bottom: 5rem;
+}
+.container {
+  width: 100%;
+}
+@media screen and (min-width: 1040px) {
+  .container {
+    width: 1040px;
+    margin: 0 auto;
+  }
+}
+.grid-cols-2 {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2 1fr);
+  gap: 1rem;
+}
+.grid-item-1 {
+  padding-top: 5rem;
+  padding-left: 1.5rem;
+}
+.grid-item-2 {
+  width: 100%;
+  height: 100%;
+  margin-left: 1rem;
+}
+    </style>
+</head>
+<body>
+    <section class="wrapper">
+        <br>
+        <h1 style="text-align:center;font-family: 'Montserrat', sans-serif; color:#0e2a86; font-size: 50px;">OTP Verification</h1>
+        <hr style="width: 86%; margin-left: 7%;margin-bottom: 10px; margin-top: -15px;height:1px;border-width:0;color:#869ab8;background-color:#869ab8"/>
+        <div class="container">
+      
+          <div class="grid-cols-2">
+            <div class="grid-item-1" style="text-align: left; margin-left: -8rem">
+                    <h1 id="label1">ENTER OTP</h1>
+                    <form action="" id="form1">
+                        <br>
+                        <input id="numb" type="password"  maxlength="4" onkeypress='event.charCode >= 48 && event.charCode <= 57'required />
+                        <br>
+                        <br>
+                        <br><div style="text-align: center;"><input id = "but2" type="button" value="CONFIRM" onclick="verify();" ></div>
+    </form>
+    <h1 id = "display"></h1>
+    <br>
+    <br>
+    <a href="/">
+        <button id="but1" href="#" class="home">HOME</button>
+        </a>
+        <br>
+    </div>
+          </div>
+          <div class="grid-item-2" style="margin-left: 14rem; margin-top: -22rem; ">
+            <img src="../static/images/otp.jpg" alt="" style="height: 400px; width: 400px" />
+          </div>
+          </div>
+          
+</body>
+<script>
+    function verify(){
+        let x = document.getElementById("numb").value;
+        document.getElementById("numb").value = "";
+        var ft =fetch('/otp', {
+            method: 'POST', // or 'PUT'
+			body:x
+			})
+		.then(response => response.json())
+		.then(data => {
+			var ar_data = data['data'];
+         //console.log(ar_data)
+		 if (ar_data == 0)window.location = "/";
+		 if (ar_data == 1){
+             //document.getElementById("display").innerHTML ='done';
+             console.log("Autherized");
+             generate_pw();
+             
+         }
+		})
+		.catch((error) => {
+  			console.error('Error:', error);
+		});
+    }
+    function generate_pw(){
+        window.location = "/profile";
+        window.reload()
+    }
+</script>
+</html>

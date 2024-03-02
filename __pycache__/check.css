@@ -1,0 +1,7 @@
+#hero {
+	background-image: url(../static/templates/index.html);
+	background-size: cover;
+	background-position: top center;
+	position: relative;
+	z-index: 1;
+}

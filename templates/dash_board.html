@@ -1,0 +1,178 @@
+<html>
+<head>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  background-color: #ffffffff;
+  text-align: center;
+  padding-top: 50px;
+  background-color: #ffffffff;
+  padding-top: 10px;
+  background-image: url("static/images/vote6.jpg"); 
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1 {
+  color: blue;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 50px;
+}
+
+.button {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Exo 2", sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  color: #00c7ec;
+  border: 1px solid #00c7ec;
+  border-radius: 10px;
+  line-height: 3em;
+  padding-left: 5em;
+  padding-right: 5em;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+.button:hover {
+  color: white;
+  box-shadow: 0 0 30px 0 rgba(0, 199, 236, 0.5);
+  background-color: #00c7ec;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+.button:hover:before {
+  -webkit-animation: shine 0.5s 0s linear;
+  -moz-animation: shine 0.5s 0s linear;
+  animation: shine 0.5s 0s linear;
+}
+.button:active {
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: box-shadow 0.2s ease-in;
+  -moz-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
+}
+.button:before {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 50%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: white;
+  box-shadow: 0 0 15px 3px white;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+}
+
+@-webkit-keyframes shine {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+@-moz-keyframes shine {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+@keyframes shine {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+</style>
+<body> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div style="text-align:center">
+  <br>
+  <br>
+  <h1>Welcome to the Voting System</h1>
+<br>
+<br>
+<span >
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<a href="/main">
+<button href="#" class="button">SIGN IN</button>
+</a>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<a href="/form">
+  <button href="#" class="button" >SIGN UP</button>
+  </a>
+</span>
+
+
+
+<script>
+function main(data){
+  window.fetch('/', {
+            method: 'POST', // or 'PUT'
+            body :data,
+        })
+        // console.log(data);
+        // location.reload();
+}
+//location.reload();
+</script>
+</body>
+</html>

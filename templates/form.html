@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<style>
+    /*set border to the form*/
+      body {
+  background-color: #ffffffff;
+  padding-top: 50px;
+}
+    form {
+        border: 3px solid #f1f1f1;
+        border-radius: 10px;
+        padding-top: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 25px;
+        background-color: #eff2fd;
+        color: #0e2a86;
+    }
+    /*assign full width inputs*/
+      
+    input[type=text] ,
+    input[type=tel] ,
+    input[type=file]
+    {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid rgb(41, 38, 38);
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+    .home {
+        background-color: #2b50c7;
+        margin: 0;
+        cursor: pointer;
+        width: 15%;
+        position: sticky;
+        margin-top: -2rem;
+        
+    }
+
+
+    
+button {
+  width: 140px;
+  height: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+button:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+.home:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+      
+</style>
+  
+<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <a href="../static/dashboard/Dashboard.html">
+        <button href="../static/dashboard/Dashboard.html" class="home"><span style="font-size: 16px; color: #fff;">HOME</span></button>
+        </a>
+        <br>
+        <br>
+        <br>
+    <form method="POST" action="/form" enctype="multipart/form-data">
+        <div class="container">
+            <label style="font-family: sans-serif; letter-spacing: 1px; font-size:15px;"><b>Username*</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+            <br><br>
+            <label for="mail"  style="font-family: sans-serif; letter-spacing: 1px; font-size:15px;"><b>Mail ID*<b></label>
+            <input type="text" id="mail" name="mail" placeholder="Enter your Mail ID" required>
+            <br><br>
+            <div style="width: 46%; float:left">
+            <label for="myfile" style="font-family: sans-serif; letter-spacing: 1px; font-size:15px;"><b></b>Upload Faces*<b></b></label>
+            
+                <input type="file" id="myfile"  name="face files[]" accept="image/*" multiple required></div>
+                <div style="width: 46%; float:right;">
+                <label for="myfile" style="font-family: sans-serif; letter-spacing: 1px; font-size:15px;"><b></b>Upload Profile image*<b></b></label>
+                <input type="file" id="myfile"  name="profile files[]" accept="image/*" required></div>
+                </div>
+            <br><br><br><br>
+            <button type="submit" style="margin-top: 2rem; font-size: 16px;">UPLOAD</button>
+        </div>
+    </form>
+</body>  
+</html>
