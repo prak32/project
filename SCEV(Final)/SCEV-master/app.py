@@ -162,7 +162,7 @@ def form():
             save_file(name,a_path,profile_files)
             FaceDetect.face_processing()
             #save_file(name,os.path.join(m_path, 'audio_database'),[])
-            profileDb(name,{"mail":mail,"profile":i_path})
+            profileDb(name,{"mail":mail,"profile":i_path, "hasVoted":False})
     except Exception as e:
         print(e)
     return render_template("form.html")
@@ -231,7 +231,7 @@ def resultapp():
                     resList = json.load(f)
                 resList = resList["result"]
                 print(resList)
-                resData = [["Party Names","Votes"]]
+                resData = []
                 names = []
                 for i in resList:
                     if i not in names:
@@ -247,3 +247,4 @@ def resultapp():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=80,debug=True)
+

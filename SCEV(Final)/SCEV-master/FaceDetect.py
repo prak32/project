@@ -87,6 +87,7 @@ def track_faces():
         if len(faces):
             for (left,top,width,height) in faces:
                 detected_name = recog(gray[top:top+height,left:left+width],65)
+                #detected_name = "sai"
                 cv2.rectangle(frames, (left, top), (left+width, top+height), (10, 0, 255), 5)
                 frames=cv2.putText(frames,detected_name,(left,top-5), cv2.FONT_HERSHEY_SIMPLEX,1.7,(10, 0, 255))
                 #cv2.FONT_HERSHEY_SIMPLEX, 0.7, 

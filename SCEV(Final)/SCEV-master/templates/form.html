@@ -83,7 +83,7 @@ button:hover {
         <br>
         <br>
         <br>
-    <form method="POST" action="/form" enctype="multipart/form-data">
+    <form name='signupForm' method="POST" action="/form" enctype="multipart/form-data" onsubmit="validateForm()">
         <div class="container">
             <label style="font-family: sans-serif; letter-spacing: 1px; font-size:15px;"><b>Username*</b></label>
             <input type="text" placeholder="Enter Username" name="uname" required>
@@ -94,14 +94,36 @@ button:hover {
             <div style="width: 46%; float:left">
             <label for="myfile" style="font-family: sans-serif; letter-spacing: 1px; font-size:15px;"><b></b>Upload Faces*<b></b></label>
             
-                <input type="file" id="myfile"  name="face files[]" accept="image/*" multiple required></div>
-                <div style="width: 46%; float:right;">
-                <label for="myfile" style="font-family: sans-serif; letter-spacing: 1px; font-size:15px;"><b></b>Upload Profile image*<b></b></label>
-                <input type="file" id="myfile"  name="profile files[]" accept="image/*" required></div>
-                </div>
+            <input type="file" id="myfile"  name="face files[]" accept="image/png, image/jpeg, image/jpg" multiple required></div>
+                
             <br><br><br><br>
             <button type="submit" style="margin-top: 2rem; font-size: 16px;">UPLOAD</button>
         </div>
     </form>
 </body>  
+<script>
+    function validateForm (){
+        const domain = document.forms["signupForm"]["mail"].value.split('@')[1];
+        if(domain != "achsnepal.edu.np"){
+            alert("The domain must be achsnepal.edu.np");
+            return false;
+        }
+
+        const selectedFiles = document.forms["signupForm"]["face files[]"];
+        for (let i=0; i<selectedFiles.files.length; i++) {
+            const file = selectedFiles.files[i].name.split('.')[1];
+            if(file!== "jpg" && file!== "jpeg" && file!== "png")  {
+                alert('the file extention cannot be accepted');
+                return false;
+            }
+        } 
+        
+        const fileCount = document.forms["signupForm"]["face files[]"].files.length;
+        if(fileCount > 30) {
+            alert('only 30 or less files are allowed');
+            return false;
+        }
+        
+    }
+</script>
 </html>
