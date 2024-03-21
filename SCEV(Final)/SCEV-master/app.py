@@ -66,6 +66,16 @@ def save_file(name, path, obj):
         if not os.path.exists(f_path1):
             file.save(f_path1)
 
+def save_voted_user(name):
+    """
+    Save the name of the user who voted to a JSON file.
+    """
+    try:
+        voted_users.add(name)  # Add the user to the set of voted users
+        with open("voted_users.json", "w") as f:
+            json.dump(list(voted_users), f)  # Save the set to a JSON file
+    except Exception as e:
+        print("Error saving voted user:", e)
 app = Flask(__name__, template_folder='templates')
 
 @app.route('/', methods=["GET", "POST"])
@@ -159,8 +169,10 @@ def form():
         print(e)
     return render_template("form.html")
 
+
 @app.route('/profile', methods=["GET", "POST"])
 def profile():
+    global reqDict
     ft["status"] = 6
     if request.method == "GET":
         return render_template("profile.html")
@@ -180,7 +192,7 @@ def profile():
             data["result"].append(party)
             with open(j_path, 'w') as j_file:
                 json.dump(data, j_file, indent=4)
-            voted_users.add(reqDict["name"])  # Add the user to the set of voted users
+            save_voted_user(reqDict["name"])  # Save the name of the user who voted
         return reqDict
 
 @app.route('/otp', methods=["GET", "POST"])
