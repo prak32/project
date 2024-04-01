@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Response, jsonify
+from flask import Flask, render_template, request, Response, jsonify, session, redirect, url_for
 import os
 import cv2
 from werkzeug.utils import secure_filename
@@ -8,6 +8,9 @@ import random
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
+ADMIN_USERNAME = "admin"
+ADMIN_PASSWORD = "password123"
 
 reqDict = {"status": 0, "name": "", "mail": "", "profile": ""}
 otpValue = 0
@@ -67,15 +70,13 @@ def save_file(name, path, obj):
             file.save(f_path1)
 
 def save_voted_user(name):
-    """
-    Save the name of the user who voted to a JSON file.
-    """
     try:
         voted_users.add(name)  # Add the user to the set of voted users
         with open("voted_users.json", "w") as f:
             json.dump(list(voted_users), f)  # Save the set to a JSON file
     except Exception as e:
         print("Error saving voted user:", e)
+
 app = Flask(__name__, template_folder='templates')
 
 @app.route('/', methods=["GET", "POST"])
@@ -220,9 +221,40 @@ def otp():
             return {"data": 0}
     return ""
 
-@app.route('/result', methods=["GET", "POST"])
-def resultapp():
+@app.route('/admin', methods=["GET", "POST"])
+def admin():
     if request.method == "GET":
+        return render_template("admin_login.html")
+    elif request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+            # Authentication successful, store user session
+            session['admin_logged_in'] = True
+            # Redirect the admin to the result page after successful login
+            return redirect(url_for('result'))
+        else:
+            # Authentication failed, redirect back to login page with error message
+            return render_template("admin_login.html", error="Invalid username or password")
+
+@app.route('/admin/dashboard')
+def admin_dashboard():
+    if not session.get('admin_logged_in'):
+        # If user is not authenticated, redirect to admin login page
+        return redirect(url_for('admin'))
+    else:
+        # User is authenticated, redirect to the result page
+        return redirect(url_for('result'))
+
+# Add this line to enable sessions in your Flask app
+app.secret_key = os.urandom(24)
+
+@app.route('/result', methods=["GET", "POST"])
+def result():
+    if not session.get('admin_logged_in'):
+        # If user is not authenticated, redirect to admin login page
+        return redirect(url_for('admin'))
+    elif request.method == "GET":
         return render_template("result.html")
     else:
         data = request.data.decode("utf-8")
@@ -248,7 +280,7 @@ def resultapp():
                 return jsonify(resData)
             except:
                 pass
-
+        session.pop('admin_logged_in', None)
         return jsonify([["Party Names", "Votes"], []])
 
 if __name__ == '__main__':
