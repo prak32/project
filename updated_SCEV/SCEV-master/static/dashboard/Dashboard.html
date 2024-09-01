@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Landing Page using HTML, CSS & Javascript</title>
+
+    <!-- ==== STYLE.CSS ==== -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- ====  REMIXICON CDN ==== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- ==== ANIMATE ON SCROLL CSS CDN  ==== -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- ==== HEADER ==== -->
+    <header class="container header">
+      <!-- ==== NAVBAR ==== -->
+      <nav class="nav">
+        <div class="logo">
+            <br>
+          <h2>Secured College Event Voting System.</h2>
+        </div>
+
+       
+        <button class="toggle_btn" id="toggle_btn">
+          <i class="ri-menu-line"></i>
+        </button>
+      </nav>
+    </header>
+    <hr style="width: 86%; margin-left: 7%; margin-top: 15px;height:1px;border-width:0;color:#869ab8;background-color:#869ab8"/>
+
+    <section class="wrapper">
+      <div class="container">
+        <div class="grid-cols-2">
+          <div class="grid-item-1">
+            <h1 class="main-heading" style="font-size: 35px;">
+              Welcome to <span>Secured College Event Voting System.</span>
+              &nbsp;
+              <span style = "color: crimson; font-size: 26px; margin-top: -10px;">Vote Anytime, Anywhere.</span>
+            </h1>
+            <p class="info-text">
+                An Secured College Event Voting System, to help you with hassle-free voting, anytime, anywhere.
+            </p>
+
+            <div class="btn_wrapper">
+              <a href="/main">
+              <button class="btn view_more_btn">
+                SIGN IN 
+                <!-- <i class="ri-arrow-right-line"></i> -->
+              </button></a>
+              
+              &nbsp; &nbsp; &nbsp;
+              <a href="/form">
+              <button class="btn documentation_btn">SIGN UP</button>
+              </a>
+
+            </div>
+          </div>
+          <div class="grid-item-2">
+            <div class="vote_img_wrapper">
+              <img src="./vote2.jpg" alt="team-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+
+    <!-- ==== ANIMATE ON SCROLL JS CDN -->
+    <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
+    <!-- ==== GSAP CDN ==== -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script> -->
+    <!-- ==== SCRIPT.JS ==== -->
+    <!-- <script src="./script.js" defer></script> -->
+  </body>
+</html>

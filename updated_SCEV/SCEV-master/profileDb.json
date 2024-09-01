@@ -1,0 +1,11 @@
+{
+    "prakash": {
+        "mail": "csit191826_prakash@achsnepal.edu.np",
+        "profile": "static\\images\\prakash\\WIN_20240117_14_36_59_Pro.jpg"
+    },
+    "nikhil": {
+        "mail": "nikhil12@achsnepal.edu.np",
+        "profile": "nikhil",
+        "hasVoted": false
+    }
+}

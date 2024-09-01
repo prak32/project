@@ -1,0 +1,237 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <style>
+        :root {
+        --blue: #1e90ff;
+         --white: #ffffff;
+            }
+        body{
+            text-align: center;
+            background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+            
+        }
+        img{
+            height: 150px;
+            width: 100px;
+            border-radius: 13px;
+            margin-top: -2rem;
+
+
+        }
+button {
+  width: 190px;
+  height: 55px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #0e2a86;
+  background-color: #e1e7fc;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  
+  
+  }
+
+button:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+.home:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+h1{
+    text-align: center;
+}
+span{
+    color: rgb(64, 64, 186);
+    font-family:  'Montserrat', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+input{
+    width: 40px;
+    height: 20px;
+    border: none;
+    border-radius: 1px;
+    text-align: center;
+    background: #eef2f3;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 50px;
+}
+
+.container {
+  width: 100%;
+
+
+}
+@media screen and (min-width: 1040px) {
+  .container {
+    width: 1040px;
+    margin: 0 auto;
+  }
+}
+.grid-cols-2 {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.grid-item-1 {
+  padding-top: 5rem;
+  padding-left: 1.5rem;
+}
+.grid-item-2 {
+  width: 100%;
+  height: 100%;
+  margin-left: 1rem;
+}
+form h2 {
+  margin-top: 3rem;
+
+}
+#timerDisplay {
+            color: red;
+            text-align: center;
+            margin-top: 40px;
+        }
+#but{
+    margin-top: -8rem;
+}
+
+
+
+  </style>
+</head>
+ 
+    <div id="main_page">
+        <nav style="display: flex; justify-content: space-around;">
+          <div><h1 style="text-align:center;font-family: 'Montserrat', sans-serif; color:#0e2a86; font-size: 45px;">Hello, Welcome to Voting Page!</h1></div>
+          
+        </nav>
+            <!-- <h1 style="text-align:center;font-family: 'Montserrat', sans-serif; color:#0e2a86; font-size: 45px;">Hello, Welcome to your Profile!</h1> -->
+            <hr style="width: 86%; margin-left: 7%;margin-bottom: 10px; margin-top: -35px;height:1px;border-width:0;color:#869ab8;background-color:#869ab8"/>
+            <h2 style="text-align:center;font-family: 'Montserrat', sans-serif; color:#3e4047; font-size: 20px; margin: 2rem;">Please drop your precious vote and choose a better candidate.
+            </h2>
+            <div class="container" style="display: flex; justify-content: space-between;">
+              <div class="container-image">
+                <img src="../static/images/profile.jpg" alt="" style="height: 400px; width: 600px;"/>
+              </div>
+              <div class="container-content" style="align-self:center;">
+                <form>
+                  <h2 style="font-size: 25px;margin-top: -8rem;"><span>For CR</span></h2>
+                        <input id="cr1" type="radio" name="radio" checked value="Prakash" style="font-size: 30px;"/>
+                        <label for="cr1">PRAKASH</label>
+                        <input id="cr2" type="radio" name="radio" checked value="Nikhil" style="font-size: 30px;"/>
+                        <label for="cr2">NIKHIL</label>
+                        <input id="cr3" type="radio" name="radio" checked value="Kritika" style="font-size: 30px;"/>
+                        <label for="cr3">KRITIKA</label>
+                </form>
+              </div>
+              </div>
+              </div>
+              <footer>
+              <div id = "timerDisplay" style="font-size: 25px;font-family:'Montserrat', sans-serif;"></div>
+              </footer>
+            <script>
+              // Function to redirect the user after a specified time
+              function redirectToHome() {
+                  window.location.href = "/"; // Redirect to the homepage
+              }
+              
+              // Countdown timer function
+              function startTimer(duration, display) {
+                  var timer = duration;
+                  var minutes, seconds;
+                  setInterval(function () {
+                      minutes = parseInt(timer / 60, 10);
+                      seconds = parseInt(timer % 60, 10);
+      
+                      minutes = minutes < 10 ? "0" + minutes : minutes;
+                      seconds = seconds < 10 ? "0" + seconds : seconds;
+      
+                      display.textContent  = "Voting closed in " + minutes + ":" + seconds;
+      
+                      if (--timer < 0) {
+                          redirectToHome(); // Redirect when the timer reaches zero
+                      }
+                  }, 1000);
+              }
+      
+              window.onload = function () {
+                  var durationInSeconds = 60; // Set the duration in seconds (e.g., 1 minutes)
+                  var display = document.getElementById("timerDisplay");
+                  startTimer(durationInSeconds, display);
+              };
+              
+            </script>
+        
+      
+<div style="margin-left: 45rem;margin-top: -8rem;">
+    <a href="/">
+        <button id="but" type="button" onclick="submit()">VOTE</button>
+        </a> 
+</div>
+    
+
+<h2 style="text-align:center;font-family: 'Montserrat', sans-serif; color:#2f51c0; font-size: 25px; margin-top: 2rem;">Thank you for being a participant.<br> Every VOTE counts!!</h2>
+</body>
+<script>
+            var ft =fetch('/profile', {
+            method: 'PUT', // or 'PUT'
+			body:'body'
+			})
+		.then(response => response.json())
+		.then(data => {
+			  //var ar_data = data['data'];
+        if(data["status"] == 0)window.location = "/profile";
+         console.log( data["profile"])
+         document.getElementById("img").src = data["profile"];
+         document.getElementById("name").innerHTML = data["name"];
+         document.getElementById("mail").innerHTML = "Mail ID : "+data["mail"];
+
+
+		})
+		.catch((error) => {
+  			console.error('Error:', error);
+		});
+        function submit(){
+            var x = document.getElementsByName("radio");
+            var i;
+            var party = "";
+            for (i = 0; i < x.length; i++) {
+                //console.log(x[i].checked);
+                //console.log(x[i].value);
+                if (x[i].checked) {
+                    party = x[i].value;
+                    break;
+                    
+                }
+            }
+            console.log(party);
+            var ft =fetch('/profile', {
+            method: 'POST', // or 'PUT'
+            body:'party='+ party
+            })
+        }
+    
+</script>
+</html>
